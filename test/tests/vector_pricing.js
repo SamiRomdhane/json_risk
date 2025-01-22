@@ -18,7 +18,7 @@ test.execute = function (TestFramework, JsonRisk) {
     Test vector pricing
 
      */
-  // JsonRisk.store_params(params);
+
   var results;
   var check = function (arr) {
     for (var j = 0; j < arr.length; j++) {
@@ -1936,6 +1936,18 @@ test.execute = function (TestFramework, JsonRisk) {
           dates: ["01.01.2010", "01.01.2011"],
         },
       },
+=======
+   
+    var results;
+    var check = function (arr) {
+        for (var j = 0; j < arr.length; j++) {
+            if (typeof(arr[j]) !== 'number')
+                return false;
+            if (isNaN(arr[j]))
+                return false;
+        }
+        return true;
+>>>>>>> c7c88400b5f8a00d59c3785f4d97f4b68310ae7f
     };
   }
 };
