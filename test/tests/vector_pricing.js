@@ -19,7 +19,7 @@ test.execute = function (TestFramework, JsonRisk) {
     Test vector pricing
 
      */
-    // JsonRisk.store_params(params);
+   
     var results;
     var check = function (arr) {
         for (var j = 0; j < arr.length; j++) {
