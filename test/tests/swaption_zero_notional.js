@@ -19,7 +19,7 @@ test.execute = function (TestFramework, JsonRisk) {
     Test swaption with zero notional
 
      */
-   // var swaption = require('./swaptions.js');
+
     var times = [1 / 12, 3 / 12, 6 / 12, 1, 2, 3, 4, 5];
     var zcs = [0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.007];
 
