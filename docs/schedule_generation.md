@@ -98,13 +98,12 @@ When both `first_date` and `next_to_last_date` are set, JSON risk rolls out back
 
 Even if `effective_date` is unset, JSON risk rolls out a decent schedule for fixed income instruments in many cases. This makes sense in analyses where past payments are not of interest and works under the following conditions:
 
- - The valuation date `library.valuation_date` must be set
- - The explicit initial stub date `first_date` must be unset
- - The attribute `stub_end` must be false or unset unless `next_to_last_date` is set
+- The valuation date `library.valuation_date` must be set
+- The explicit initial stub date `first_date` must be unset
+- The attribute `stub_end` must be false or unset unless `next_to_last_date` is set
 
 If any of these conditions are violated, JSON risk will throw an error. Otherwise, JSON risk first rolls out the interest rate schedule backward from `maturity` or `next_to_last_date` in regular monthly periods the length of which is determined by `term` until the valuation date is reached or preceded. This yields a schedule with a regular first period starting in the past or at valuation date.
 
 In the special case where `tenor` is zero, the resulting schedule consists of the valuation date and `maturity` only.
 
 If fixing or repayment schedules are required, these are rolled out with `effective_date` substituted by the first date in the interest rate schedule. Consequently, all three schedules start and end at the same dates.
-

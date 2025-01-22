@@ -1,75 +1,74 @@
 [
-{
-  "months": 60,
-  "notional": 10000,
-  "fixed_rate": 0.0,
-  "bdc": "unadjusted",
-  "tenor": 3,
-  "repay_tenor": 3,
-  "interest_capitalization": false,
-  "type": "bond",
-  "linear_amortization": false,
-  "sub_portfolio": "Bullet 5Y"
-},
-{
-  "months": 120,
-  "notional": 10000,
-  "fixed_rate": 0.0,
-  "bdc": "unadjusted",
-  "tenor": 3,
-  "repay_tenor": 3,
-  "interest_capitalization": false,
-  "type": "bond",
-  "linear_amortization": true,
-  "sub_portfolio": "Gleitend 10Y"
-},
-{
-  "months": 120,
-  "notional": 20000,
-  "fixed_rate": 0.0,
-  "bdc": "unadjusted",
-  "tenor": 3,
-  "repay_tenor": 3,
-  "interest_capitalization": false,
-  "type": "bond",
-  "linear_amortization": true,
-  "sub_portfolio": "2 x Gleitend 10Y - Gleitend 1Y"
-},
-{
-  "months": 12,
-  "notional": -10000,
-  "fixed_rate": 0.0,
-  "bdc": "unadjusted",
-  "tenor": 3,
-  "repay_tenor": 3,
-  "interest_capitalization": false,
-  "type": "bond",
-  "linear_amortization": true,
-  "sub_portfolio": "2 x Gleitend 10Y - Gleitend 1Y"
-},
-{
-  "months": 180,
-  "notional": 10000,
-  "fixed_rate": 0.0,
-  "bdc": "unadjusted",
-  "tenor": 3,
-  "repay_tenor": 3,
-  "interest_capitalization": false,
-  "type": "bond",
-  "linear_amortization": true,
-  "sub_portfolio": "Gleitend 15Y"
-}
-,
-{
-  "months": 240,
-  "notional": 10000,
-  "fixed_rate": 0.0,
-  "bdc": "unadjusted",
-  "tenor": 3,
-  "repay_tenor": 3,
-  "interest_capitalization": false,
-  "type": "bond",
-  "linear_amortization": true,
-  "sub_portfolio": "Gleitend 20Y"
-}
+  {
+    "months": 60,
+    "notional": 10000,
+    "fixed_rate": 0.0,
+    "bdc": "unadjusted",
+    "tenor": 3,
+    "repay_tenor": 3,
+    "interest_capitalization": false,
+    "type": "bond",
+    "linear_amortization": false,
+    "sub_portfolio": "Bullet 5Y"
+  },
+  {
+    "months": 120,
+    "notional": 10000,
+    "fixed_rate": 0.0,
+    "bdc": "unadjusted",
+    "tenor": 3,
+    "repay_tenor": 3,
+    "interest_capitalization": false,
+    "type": "bond",
+    "linear_amortization": true,
+    "sub_portfolio": "Gleitend 10Y"
+  },
+  {
+    "months": 120,
+    "notional": 20000,
+    "fixed_rate": 0.0,
+    "bdc": "unadjusted",
+    "tenor": 3,
+    "repay_tenor": 3,
+    "interest_capitalization": false,
+    "type": "bond",
+    "linear_amortization": true,
+    "sub_portfolio": "2 x Gleitend 10Y - Gleitend 1Y"
+  },
+  {
+    "months": 12,
+    "notional": -10000,
+    "fixed_rate": 0.0,
+    "bdc": "unadjusted",
+    "tenor": 3,
+    "repay_tenor": 3,
+    "interest_capitalization": false,
+    "type": "bond",
+    "linear_amortization": true,
+    "sub_portfolio": "2 x Gleitend 10Y - Gleitend 1Y"
+  },
+  {
+    "months": 180,
+    "notional": 10000,
+    "fixed_rate": 0.0,
+    "bdc": "unadjusted",
+    "tenor": 3,
+    "repay_tenor": 3,
+    "interest_capitalization": false,
+    "type": "bond",
+    "linear_amortization": true,
+    "sub_portfolio": "Gleitend 15Y"
+  },
+  {
+    "months": 240,
+    "notional": 10000,
+    "fixed_rate": 0.0,
+    "bdc": "unadjusted",
+    "tenor": 3,
+    "repay_tenor": 3,
+    "interest_capitalization": false,
+    "type": "bond",
+    "linear_amortization": true,
+    "sub_portfolio": "Gleitend 20Y"
+  }
 ]

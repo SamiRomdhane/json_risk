@@ -3,9 +3,9 @@
 <p>JSON Risk supports the parameter types below:</p>
 
 <ul>
-<li>Scalars</li>
-<li>Curves</li>
-<li>Surfaces</li>
+  <li>Scalars</li>
+  <li>Curves</li>
+  <li>Surfaces</li>
 </ul>
 
 <h2>Parameter Field definitions</h2>
@@ -15,8 +15,11 @@
 <p>Fields:</p>
 
 <ul>
-<li>type (JSON string, purely informative)</li>
-<li>value (JSON number or, in the context of vector pricing, JSON array of numbers.)</li>
+  <li>type (JSON string, purely informative)</li>
+  <li>
+    value (JSON number or, in the context of vector pricing, JSON array of
+    numbers.)
+  </li>
 </ul>
 
 <p>Regular example:</p>
@@ -40,18 +43,30 @@
 <p>Fields:</p>
 
 <ul>
-<li>type (JSON string, purely informative)</li>
-<li>times (JSON array of numbers) Note: If times are not provided, but optional days, dates or labels are provided, times are reconstructed from days (preferrably), dates (if days are not given) or labels (if neither times, days ot dates are given)</li>
-<li>dfs (discount factors, JSON array of numbers) Note: If discount factors are not provided, but optional zero coupon rates are, then discount factors are calculated from zero coupon rates</li>
+  <li>type (JSON string, purely informative)</li>
+  <li>
+    times (JSON array of numbers) Note: If times are not provided, but optional
+    days, dates or labels are provided, times are reconstructed from days
+    (preferrably), dates (if days are not given) or labels (if neither times,
+    days ot dates are given)
+  </li>
+  <li>
+    dfs (discount factors, JSON array of numbers) Note: If discount factors are
+    not provided, but optional zero coupon rates are, then discount factors are
+    calculated from zero coupon rates
+  </li>
 </ul>
 
-<p>Optional: </p>
+<p>Optional:</p>
 
 <ul>
-<li>days (JSON array of integers)</li>
-<li>dates (JSON array of <code>Date</code>, first date must correspond to valuation date)</li>
-<li>labels (JSON array of <code>Period string</code> values)</li>
-<li>zcs (zero coupon rates, JSON array of number)</li>
+  <li>days (JSON array of integers)</li>
+  <li>
+    dates (JSON array of <code>Date</code>, first date must correspond to
+    valuation date)
+  </li>
+  <li>labels (JSON array of <code>Period string</code> values)</li>
+  <li>zcs (zero coupon rates, JSON array of number)</li>
 </ul>
 
 <p><em>All arrays must be sorted by times in ascending order</em></p>
@@ -116,20 +131,29 @@
 <p>Fields:</p>
 
 <ul>
-<li>type (JSON string, purely informative)</li>
-<li>expiries (JSON array of numbers) Note: If expiries are not provided, but optional labels_expiry are provided, expiries are reconstructed from labels_expiry</li>
-<li>terms (JSON array of numbers) Note: If terms are not provided, but optional labels_expiry are provided, terms are reconstructed from labels_expiry</li>
-<li>values (JSON array of arrays of numbers)</li>
+  <li>type (JSON string, purely informative)</li>
+  <li>
+    expiries (JSON array of numbers) Note: If expiries are not provided, but
+    optional labels_expiry are provided, expiries are reconstructed from
+    labels_expiry
+  </li>
+  <li>
+    terms (JSON array of numbers) Note: If terms are not provided, but optional
+    labels_expiry are provided, terms are reconstructed from labels_expiry
+  </li>
+  <li>values (JSON array of arrays of numbers)</li>
 </ul>
 
-<p>Optional: </p>
+<p>Optional:</p>
 
 <ul>
-<li>labels_expiry (JSON array of <code>Period string</code> values)</li>
-<li>labels_term (JSON array of <code>Period string</code> values)</li>
+  <li>labels_expiry (JSON array of <code>Period string</code> values)</li>
+  <li>labels_term (JSON array of <code>Period string</code> values)</li>
 </ul>
 
-<p><em>All arrays must be sorted by times (expiry, term) in ascending order</em></p>
+<p>
+  <em>All arrays must be sorted by times (expiry, term) in ascending order</em>
+</p>
 
 <p>Example with expiries and terms:</p>
 
@@ -185,19 +209,44 @@
 
 <h2>Conventions and pricing accuracy</h2>
 
-<p>JSON risk interprets zero coupon rates with the convention <code>act/365</code> and annual compounding. That is, discount factors are calculated with the formula</p>
+<p>
+  JSON risk interprets zero coupon rates with the convention
+  <code>act/365</code> and annual compounding. That is, discount factors are
+  calculated with the formula
+</p>
 
 <pre><code>    dfs[i]=Math.pow(1 + zcs[i], -times[i])
 </code></pre>
 
 <p>when converting from zero coupon rates.</p>
 
-<p>Internally, JSON risk always calculates with times. Times represent years. JSON risk converts</p>
+<p>
+  Internally, JSON risk always calculates with times. Times represent years.
+  JSON risk converts
+</p>
 
 <ul>
-<li>days to times by dividing by <code>365</code>, consistent with the <code>act/365</code> day count convention</li>
-<li>dates to times by assigning the first date a value of zero and compute all other dates into times with the <code>act/365</code> day count convention</li>
-<li>labels to times by parsing leading integers and dividing monthly values by <code>12</code>, weekly values by <code>52</code> and daily values by <code>365</code>, consistent with the <code>act/365</code> day count convention. Yearly values are not further converted, e.g., the period string <code>"1Y"</code> just represents one.</li>
+  <li>
+    days to times by dividing by <code>365</code>, consistent with the
+    <code>act/365</code> day count convention
+  </li>
+  <li>
+    dates to times by assigning the first date a value of zero and compute all
+    other dates into times with the <code>act/365</code> day count convention
+  </li>
+  <li>
+    labels to times by parsing leading integers and dividing monthly values by
+    <code>12</code>, weekly values by <code>52</code> and daily values by
+    <code>365</code>, consistent with the <code>act/365</code> day count
+    convention. Yearly values are not further converted, e.g., the period string
+    <code>"1Y"</code> just represents one.
+  </li>
 </ul>
 
-<p>When delivering yield curve or surface data from a source system, the easiest way to achieve maximum accuracy is to supply days and either discount factors or zero coupon rates with the convention <code>act/365</code> and annual compounding. Correct delivery of times or dates achieves the same accuracy. Labels are a convenient way for approximate pricing.</p>
+<p>
+  When delivering yield curve or surface data from a source system, the easiest
+  way to achieve maximum accuracy is to supply days and either discount factors
+  or zero coupon rates with the convention <code>act/365</code> and annual
+  compounding. Correct delivery of times or dates achieves the same accuracy.
+  Labels are a convenient way for approximate pricing.
+</p>

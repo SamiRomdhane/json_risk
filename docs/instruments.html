@@ -3,49 +3,62 @@
 <p>JSON Risk supports the instrument types below:</p>
 
 <ul>
-<li>Fixed income instruments
-<ul>
-<li>Fixed rate bonds (<code>bond</code>)</li>
-<li>Floating rate bonds (<code>floater</code>)</li>
-<li>Interest rate swaps (<code>swap</code>)</li>
-<li>FX spot and forwards contracts (<code>fxterm</code>)</li>
-</ul></li>
-<li>Callable fixed income instruments
-<ul>
-<li>Plain vanilla swaptions (<code>swaption</code>)</li>
-<li>Single callable and multicallable bond (<code>callable_bond</code>)</li>
-</ul></li>
+  <li>
+    Fixed income instruments
+    <ul>
+      <li>Fixed rate bonds (<code>bond</code>)</li>
+      <li>Floating rate bonds (<code>floater</code>)</li>
+      <li>Interest rate swaps (<code>swap</code>)</li>
+      <li>FX spot and forwards contracts (<code>fxterm</code>)</li>
+    </ul>
+  </li>
+  <li>
+    Callable fixed income instruments
+    <ul>
+      <li>Plain vanilla swaptions (<code>swaption</code>)</li>
+      <li>
+        Single callable and multicallable bond (<code>callable_bond</code>)
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <p>Generally, an instrument is represented by a plain JSON object.</p>
 
 <h2>Fixed and floating rate bonds - the <code>fixed_income</code> class.</h2>
 
-<p>Fixed and floating rate bonds provide a lot of flexibility to model a wide range of both banking book and trading book positons.</p>
+<p>
+  Fixed and floating rate bonds provide a lot of flexibility to model a wide
+  range of both banking book and trading book positons.
+</p>
 
 <h3>Schedule generation</h3>
 
 <p>Within schedule generation, these instruments support</p>
 
 <ul>
-<li>long and short implicit stubs (e.g., forward and backward roll out)</li>
-<li>explicit initial and final stubs</li>
-<li>completely independent generation of
-<ul>
-<li>interest rate schedule</li>
-<li>fixing schedule for floating rate instruments</li>
-<li>repayment schedule for amortizing instruments</li>
-</ul></li>
+  <li>long and short implicit stubs (e.g., forward and backward roll out)</li>
+  <li>explicit initial and final stubs</li>
+  <li>
+    completely independent generation of
+    <ul>
+      <li>interest rate schedule</li>
+      <li>fixing schedule for floating rate instruments</li>
+      <li>repayment schedule for amortizing instruments</li>
+    </ul>
+  </li>
 </ul>
 
 <h3>Amortization features</h3>
 
-<p>The amortization features below allow to define various notional profiles:</p>
+<p>
+  The amortization features below allow to define various notional profiles:
+</p>
 
 <ul>
-<li>bullet repayment upon maturity</li>
-<li>step-down or linear amortization (regular repayments)</li>
-<li>interest capitalization (allowing to define annuity-type profiles)</li>
+  <li>bullet repayment upon maturity</li>
+  <li>step-down or linear amortization (regular repayments)</li>
+  <li>interest capitalization (allowing to define annuity-type profiles)</li>
 </ul>
 
 <h3>Pricing and usage</h3>
@@ -69,7 +82,11 @@
 
 <h3>Examples</h3>
 
-<p>Fixed rate bullet bond with yearly coupon. This mininal definition below pulls default values e.g., no amortization, <code>act/365</code> day count convention and backward rollout of the interest rate schedule.</p>
+<p>
+  Fixed rate bullet bond with yearly coupon. This mininal definition below pulls
+  default values e.g., no amortization, <code>act/365</code> day count
+  convention and backward rollout of the interest rate schedule.
+</p>
 
 <pre><code>    {
             notional: 100,
@@ -79,7 +96,10 @@
     }
 </code></pre>
 
-<p>Fixed rate bullet bond with semi-annual coupon, explicit issuance date and explicit initial and final stubs.</p>
+<p>
+  Fixed rate bullet bond with semi-annual coupon, explicit issuance date and
+  explicit initial and final stubs.
+</p>
 
 <pre><code>    {
             notional: 100,
@@ -109,7 +129,9 @@
     }
 </code></pre>
 
-<p>Floating rate bullet bond with semi-annual coupon, current fixing provided</p>
+<p>
+  Floating rate bullet bond with semi-annual coupon, current fixing provided
+</p>
 
 <pre><code>    {
             notional: 100,
@@ -123,7 +145,12 @@
 
 <h2>Interest rate swaps - the <code>swap</code> class</h2>
 
-<p>Instead of representing swaps leg-wise with the <code>fixed_income</code> class, the <code>swap</code> class captures both fixed and floating leg in one class. This is convenient for functionalities that require combining both legs, e.g., fair swap rate derivation.</p>
+<p>
+  Instead of representing swaps leg-wise with the
+  <code>fixed_income</code> class, the <code>swap</code> class captures both
+  fixed and floating leg in one class. This is convenient for functionalities
+  that require combining both legs, e.g., fair swap rate derivation.
+</p>
 
 <h3>Pricing and usage</h3>
 
@@ -195,7 +222,9 @@
 
 <h3>Swaptions - the <code>swaption</code> class</h3>
 
-<p>Vanilla swaption positions. Swaptions are priced using the bachelier model.</p>
+<p>
+  Vanilla swaption positions. Swaptions are priced using the bachelier model.
+</p>
 
 <h3>Pricing and usage</h3>
 
@@ -260,7 +289,10 @@
 
 <h2>FX spot, forward, and swap positions - the <code>fxterm</code> class</h2>
 
-<p>This class represents a single-currency-side of an fx spot, forward or swap position.</p>
+<p>
+  This class represents a single-currency-side of an fx spot, forward or swap
+  position.
+</p>
 
 <h3>Pricing and usage</h3>
 
@@ -297,9 +329,17 @@
 
 <h2>Callable bonds - the <code>callable_fixed_income</code> class</h2>
 
-<p>Callable bonds must be fixed rate bonds. Apart from that, all features from the <code>fixed_income</code> class are supported.</p>
+<p>
+  Callable bonds must be fixed rate bonds. Apart from that, all features from
+  the <code>fixed_income</code> class are supported.
+</p>
 
-<p>Callable bond pricing is implemented with a Linear Gauss Markov (or, equivalently, Hull-White) model in the spirit of Hagan, Patrick; EVALUATING AND HEDGING EXOTIC SWAP INSTRUMENTS VIA LGM (2019). It calibrates to a basket of plain vanilla swaptions automatically generated under the hood.</p>
+<p>
+  Callable bond pricing is implemented with a Linear Gauss Markov (or,
+  equivalently, Hull-White) model in the spirit of Hagan, Patrick; EVALUATING
+  AND HEDGING EXOTIC SWAP INSTRUMENTS VIA LGM (2019). It calibrates to a basket
+  of plain vanilla swaptions automatically generated under the hood.
+</p>
 
 <h3>Pricing and usage</h3>
 
