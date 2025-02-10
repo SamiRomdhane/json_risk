@@ -73,8 +73,9 @@ if (typeof require === "function") {
     var JsonRisk = require("../dist/json_risk.js");
 
     test_files = [
-        "python_data.js",
-        "date_conversion.js",
+	
+        "python_interpolation.js",
+		"date_conversion.js",
         "number_bool_vector.js",
         "year_fraction.js",
         "month_rolling.js",
@@ -96,7 +97,7 @@ if (typeof require === "function") {
         "callable_bond_valuation.js",
         "amortizing_callable_bonds.js",
         "vector_pricing.js",
-        "vector_pricing_curve_scenarios.js",
+        "vector_pricing_curve_scenarios.js", 
     ];
 
     for (testfile of test_files) {

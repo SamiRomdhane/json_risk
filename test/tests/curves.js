@@ -44,6 +44,7 @@ test.execute = function (TestFramework, JsonRisk) {
   c = {
     type: "yield",
     labels: ["1Y", "20Y"],
+	
     times: [1, 20],
     dfs: [1, 0.5],
   };
